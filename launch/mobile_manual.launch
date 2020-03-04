@@ -1,0 +1,14 @@
+<!--
+launch file to control mobile robot
+ -->
+
+<launch>
+  <!-- Arguments -->
+
+  <!--Main-->
+  <include file="$(find mobile)/launch/mobile_config.launch" />
+
+  <include file="$(find mobile)/include/teleop_key.launch" />
+
+		
+</launch>

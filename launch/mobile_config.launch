@@ -1,0 +1,19 @@
+ <launch>
+
+   <!-- Arguments -->
+  <arg name="serial_port"     default="/dev/ttyUSB1"/>
+
+  <!--Main-->
+  <include file="$(find mobile)/include/rplidar.launch" />
+
+  <include file="$(find mobile)/include/my_laser_filter.launch"/>
+
+  <node name="odometry" pkg="mobile" type="odom_node.py"/> 
+
+  <node pkg = "mobile" type = "serial_node.py" name = "arduino" args = "$(arg serial_port)"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0.33 0 0.15 0 0 0 base_footprint laser 100" />
+
+  <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0 0.05 0 0 0  base_link base_footprint 100" />
+
+</launch>

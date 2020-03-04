@@ -1,0 +1,16 @@
+<!--
+launch file to build a map using hector_slam method
+ -->
+
+<launch>
+   <!-- Arguments -->
+  <!-- <arg name="scan_topic"     default="scan_filtered"/> -->
+
+  <!--Main-->
+  <include file="$(find mobile)/launch/mobile_manual.launch" />
+
+  <include file="$(find mobile)/include/mapping_default.launch"/>
+
+  <include file="$(find mobile)/launch/mobile_rviz.launch" />
+
+</launch>

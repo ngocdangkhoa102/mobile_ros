@@ -1,0 +1,18 @@
+<!--
+launch file to build a map using gmapping method
+ -->
+
+<launch>
+   <!-- Arguments -->
+  <arg name="scan_topic"     default="scan_filtered"/>
+
+  <!--Main-->
+  <include file="$(find mobile)/launch/mobile_manual.launch" />
+
+  <node pkg="gmapping" type="slam_gmapping" name ="gmapping_node" >
+  <remap from="scan" to="$(arg scan_topic)" />
+  </node>
+
+  <include file="$(find mobile)/launch/mobile_rviz.launch" />
+
+</launch>

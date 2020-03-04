@@ -1,0 +1,19 @@
+<!--
+launch file to auto run mobile robot
+ -->
+
+<launch>
+   <!-- Arguments -->
+  <arg name="scan_topic"     default="scan_filtered"/>
+
+  <!--Main-->
+  <include file="$(find mobile)/launch/mobile_manual.launch"/>
+
+  <node name="map_server" pkg="map_server" type="map_server"
+        args="$(find mobile)/map/mymap.yaml" output="screen"/>
+
+  <include file="$(find mobile)/include/amcl_diff.launch"/>
+
+  <include file="$(find mobile)/launch/mobile_rviz.launch" />
+		
+</launch>
